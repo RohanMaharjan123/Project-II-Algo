@@ -1,15 +1,11 @@
 import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema({
-  email: { type: String, required: true },
-  emailIv: { type: String, required: true }, // Store the IV for email encryption
-  password: { type: String, required: true },
-  createdAt: {
-    type: Date,
-    default: new Date(),
-  },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true }, 
+  iv: { type: String, required: true } 
 });
 
-const UserModal = mongoose.model('UserModal', userSchema);
+const UserModal = mongoose.model('User', userSchema);
 
 export default UserModal;
